@@ -5,13 +5,13 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-#quiz-start {
+#quiz-prompt {
     color:black;
     background-color: brown;
     
 }
 
-#quiz {
+#quiz-content {
     background-color: rgb(64, 158, 72);
 }
 
