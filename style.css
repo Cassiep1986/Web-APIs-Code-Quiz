@@ -1,0 +1,20 @@
+.page {
+    background-color: aliceblue;
+    text-align: center;
+    color:darkslateblue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#quiz-start {
+    color:black;
+    background-color: brown;
+    
+}
+
+#quiz {
+    background-color: rgb(64, 158, 72);
+}
+
+.hide {
+    display: none;
+}
