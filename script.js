@@ -4,42 +4,42 @@ var quizcontent = document.querySelector("#quiz-content");
 var question = document.querySelector("#question");
 var choices = document.querySelector("#choices");
 var timer = document.getElementById("time");
+var maxquestions = 5;
 
 
-var question1 = {
-    
+var questionSet = [ {
+
         text:"What is a my favorite color?",
-        correctAnswer:"Pink",
+        correctAnswer:0,
         options: ["Pink", "Yellow", "Blue"],
-    }
+    },
 
-var question2 = {
-    
+{
         text:"What is a my favorite Animal?",
         correctAnswer:"Unicorn",
         options: ["Unicorn", "Zebra", "Tiger"],
-    }
+    },
 
-var question3 = {
+{
     
         text:"What color is the sky?",
         correctAnswer:"Blue",
         options: ["Green", "Blue", "Banana"],
-    }
+    },
 
-var question4 = {
+{
     
         text:"Question 4?",
         correctAnswer:"Right",
         options: ["Wrong", "Wrong", "Right"],
-    }
+    },
 
-var question5 = {
+{
     
         text:"Question 5?",
         correctAnswer:"Right",
         options: ["Wrong", "Wrong", "Right"],
-    }
+    } ]
 
 function quiztimer(){
     var timeleft = 75;
@@ -87,7 +87,6 @@ startbtn.addEventListener("click", function (e) {
 });
 
 choices.addEventListener("click", function (e) {
-if (question1.correctAnswer) {
-  console.log("okay")    
+if (e.target.matches("Pink")); {
 }
 });
