@@ -3,13 +3,18 @@ var startbtn = document.querySelector("#start-btn");
 var quizcontent = document.querySelector("#quiz-content");
 var question = document.querySelector("#question");
 var choices = document.querySelector("#choices");
-var timer = document.getElementById("time");
 
+<<<<<<< HEAD
 var question1 = {
 
+=======
+var question1 = [
+    {
+>>>>>>> parent of 8b93cdf (added questions/answers)
         text:"What is a my favorite color?",
         correctAnswer:"pink",
         options: ["Pink", "Yellow", "Blue"],
+<<<<<<< HEAD
     }    
 
 var question2 = {       
@@ -33,13 +38,25 @@ function populatechoices(x) {
     choicebtn.innerHTML = [x];
     document.getElementById("choices").append(choicebtn);
 }}
+=======
+    },
+];
 
+>>>>>>> parent of 8b93cdf (added questions/answers)
 
+startbtn.addEventListener("click", function (e) {
+quizprompt.classList.add("hide");
+quizcontent.classList.remove("hide")
+})
+
+<<<<<<< HEAD
     startbtn.addEventListener("click", function (e) {
         quizprompt.classList.add("hide");
         quizcontent.classList.remove("hide");
         populatequestion1()
         populatechoices(options)
     });
+=======
+>>>>>>> parent of 8b93cdf (added questions/answers)
 
 
