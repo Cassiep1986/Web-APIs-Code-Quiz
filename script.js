@@ -39,6 +39,7 @@ var question5 = {
   options: ["Wrong", "Wrong", "Right"],
 };
 
+
 function startTimer() {
   var interval = setInterval(function() {
     timeleft--;
@@ -53,54 +54,64 @@ function startTimer() {
   }, 1000);
 }
 
-function populatequestion1() {
-  var q1 = document.createElement("h3");
-  q1.innerHTML = question1.text;
-  document.getElementById("question").append(q1);
-}
-
-function populatechoices(x) {
-  var choicebtn = document.createElement("button");
-  choicebtn.innerHTML = x;
-  document.getElementById("choices").append(choicebtn);
+function startquiz() {
+  var q = document.createElement("h3");
+  q.innerHTML = question1.text;
+  document.getElementById("question").append(q);
+  
 }
 
 for (var i = 0; i < question1.options.length; i++) {
-  populatechoices(question1.options[i]);
+  var choicebtn = document.createElement("button");
+  choicebtn.innerHTML = question1.options[i];
+  document.getElementById("choices").append(choicebtn);
+  
 }
 
-function populatequestion2() {
-  var q2 = document.createElement("h3");
-  q2.innerHTML = question2.text;
-  document.getElementById("question").append(q2);
-}
-
-function populatechoices2(x) {
-  var choicebtn2 = document.createElement("button");
-  choicebtn2.innerHTML = x;
-  document.getElementById("choices2").append(choicebtn2);
-}
-
-for (var i = 0; i < question2.options.length; i++) {
-  populatechoices2(question2.options[i]);
+function setScoreText() {
+  scoredisplay.textContent = score;
 }
 
 startbtn.addEventListener("click", function () {
   quizprompt.classList.add("hide");
   quizcontent.classList.remove("hide");
-  choices2.classList.add("hide");
-  populatequestion1();
+  // choices2.classList.add("hide");
+  startquiz();
   startTimer();
 });
 
-
-choices.children[1].addEventListener("click", function () {
-  choices.classList.add("hide");
-  choice2.classList.remove("hide");
+choices.addEventListener("click", function (e) {
+  var target = e.target;
+  (question1.text).splice(0)
+  console.log(question2.text)
+  if(target.textContent === question1.correctAnswer) {
+    score +=10;
+    setScoreText();
+    
+    
+    
+    // var newQuestion = question1.replace("hola!");
+  }
+  
+  
+  
 });
 
-choices2.children[0].addEventListener("click", function () {
-  console.log("what");
-});
+document.getElementById("scoredisplay").append("Score: " + score);
 
-document.getElementById("scoredisplay").append("Score: " + score)
+// if (target.matches("button")) {
+// }
+
+
+
+// function populatequestion2() {
+  //   var q2 = document.createElement("h3");
+  //   q2.innerHTML = question2.text;
+  //   document.getElementById("question").append(q2);
+  // }
+  
+  // function populatechoices2(x) {
+    //   var choicebtn2 = document.createElement("button");
+    //   choicebtn2.innerHTML = x;
+//   document.getElementById("choices2").append(choicebtn2);
+// }
