@@ -5,88 +5,90 @@ var question = document.querySelector("#question");
 var choices = document.querySelector("#choices");
 var timer = document.getElementById("time");
 
-var question1 = {
+// var question1 = {
+//   text: "What is a my favorite color?",
+//   correctAnswer: "Pink",
+//   options: ["Pink", "Yellow", "Blue"],
+// };
 
-        text:"What is a my favorite color?",
-        correctAnswer:"Pink",
-        options: ["Pink", "Yellow", "Blue"],
-    }
+var question1 = [
+  {
+    question: "What is a my favorite color?",
+    options: [
+      {text: "Pink", correct: true},
+      {text: "Yello", correct: false},
+    ]
     
+}]
 
 var question2 = {
-
-        text:"What is a my favorite Animal?",
-        correctAnswer:"Unicorn",
-        options: ["Unicorn", "Zebra", "Tiger"],
-    }
+  text: "What is a my favorite Animal?",
+  correctAnswer: "Unicorn",
+  options: ["Unicorn", "Zebra", "Tiger"],
+};
 
 var question3 = {
-
-        text:"What color is the sky?",
-        correctAnswer:"Blue",
-        options: ["Green", "Blue", "Banana"],
-    }
+  text: "What color is the sky?",
+  correctAnswer: "Blue",
+  options: ["Green", "Blue", "Banana"],
+};
 
 var question4 = {
-
-        text:"Question 4?",
-        correctAnswer:"Right",
-        options: ["Wrong", "Wrong", "Right"],
-    }
+  text: "Question 4?",
+  correctAnswer: "Right",
+  options: ["Wrong", "Wrong", "Right"],
+};
 
 var question5 = {
+  text: "Question 5?",
+  correctAnswer: "Right",
+  options: ["Wrong", "Wrong", "Right"],
+};
 
-        text:"Question 5?",
-        correctAnswer:"Right",
-        options: ["Wrong", "Wrong", "Right"],
+function startTimer() {
+  var interval = setInterval(function () {
+    timeleft--;
+    quiztimer.textContent = "Seconds left: " + timeleft;
+    if (timeleft === 0) {
+      // Stops execution of action at set interval
+      clearInterval(interval);
+      // Calls function to create and append image
+      sendMessage();
     }
-
-function quiztimer(){
-    var timeleft = 75;
-    var timeinterval = setInterval(function(){
-        if (timeleft > 1) { 
-            timer.textContent = timeleft;
-            timeleft--;       
-        } else {
-            clearInterval(timeinterval);
-        }
-     },1000);
+  }, 1000);
 }
 
-
 function populatequestion1() {
-    var q1 = document.createElement("h3");
-    q1.innerHTML = question1.text;
-    document.getElementById("question").append(q1);
+  var q1 = document.createElement("h3");
+  q1.innerHTML = question1.text;
+  document.getElementById("question").append(q1);
 }
 
 function populatechoices(x) {
-    var choicebtn = document.createElement("button");
-    choicebtn.innerHTML = x;
-    document.getElementById("choices").append(choicebtn);
+  var choicebtn = document.createElement("button");
+  choicebtn.innerHTML = x;
+  document.getElementById("choices").append(choicebtn);
 }
 
 for (var i = 0; i < question1.options.length; i++) {
-    populatechoices(question1.options[i]) 
-
+  populatechoices(question1.options[i]);
 }
 
 function populatequestion2() {
-    var q2 = document.createElement("h3");
-    q2.innerHTML = question2.text;
-    document.getElementById("question").append(q2);
+  var q2 = document.createElement("h3");
+  q2.innerHTML = question2.text;
+  document.getElementById("question").append(q2);
 }
 
-
-
-populatequestion1()
+populatequestion1();
 
 startbtn.addEventListener("click", function (e) {
-    quizprompt.classList.add("hide");
-    quizcontent.classList.remove("hide");
+  quizprompt.classList.add("hide");
+  quizcontent.classList.remove("hide");
 });
 
 choices.addEventListener("click", function (e) {
-if (question1.options === question1.correctAnswer) {
+  if (question1.options === question1.correctAnswer) {
     console.log("yes");
-}});
+  }
+});
