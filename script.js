@@ -3,23 +3,14 @@ var startbtn = document.querySelector("#start-btn");
 var quizcontent = document.querySelector("#quiz-content");
 var question = document.querySelector("#question");
 var choices = document.querySelector("#choices");
-var timer = document.getElementById("time");
+var quiztimer = document.querySelector("#quiztimer");
+var timeleft = 75;
 
-// var question1 = {
-//   text: "What is a my favorite color?",
-//   correctAnswer: "Pink",
-//   options: ["Pink", "Yellow", "Blue"],
-// };
-
-var question1 = [
-  {
-    question: "What is a my favorite color?",
-    options: [
-      {text: "Pink", correct: true},
-      {text: "Yello", correct: false},
-    ]
-    
-}]
+var question1 = {
+    text: "What is a my favorite color?",
+    correctAnswer: "Pink",
+    options: ["Pink", "Yellow", "Blue"],
+};
 
 var question2 = {
   text: "What is a my favorite Animal?",
@@ -46,15 +37,16 @@ var question5 = {
 };
 
 function startTimer() {
-  var interval = setInterval(function () {
+  var interval = setInterval(function() {
     timeleft--;
-    quiztimer.textContent = "Seconds left: " + timeleft;
-    if (timeleft === 0) {
+    quiztimer.textContent ="Seconds left: " + timeleft;
+    if(timeleft === 0) {
       // Stops execution of action at set interval
       clearInterval(interval);
       // Calls function to create and append image
       sendMessage();
     }
+    
   }, 1000);
 }
 
@@ -80,15 +72,14 @@ function populatequestion2() {
   document.getElementById("question").append(q2);
 }
 
-populatequestion1();
-
-startbtn.addEventListener("click", function (e) {
+startbtn.addEventListener("click", function () {
   quizprompt.classList.add("hide");
   quizcontent.classList.remove("hide");
+  populatequestion1();
+  startTimer();
+});
+choices.children[0].addEventListener("click", function (x) {
+  console.log("what");
 });
 
-choices.addEventListener("click", function (e) {
-  if (question1.options === question1.correctAnswer) {
-    console.log("yes");
-  }
-});
+
