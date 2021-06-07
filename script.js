@@ -5,34 +5,35 @@ var question = document.querySelector("#question");
 var choices = document.querySelector("#choices");
 var quiztimer = document.querySelector("#quiztimer");
 var timeleft = 75;
+var choice2 = document.querySelector("#choices2")
 
 var question1 = {
     text: "What is a my favorite color?",
-    correctAnswer: "Pink",
+    correctAnswer: 1,
     options: ["Pink", "Yellow", "Blue"],
 };
 
 var question2 = {
   text: "What is a my favorite Animal?",
-  correctAnswer: "Unicorn",
+  correctAnswer: 0,
   options: ["Unicorn", "Zebra", "Tiger"],
 };
 
 var question3 = {
   text: "What color is the sky?",
-  correctAnswer: "Blue",
+  correctAnswer: 1,
   options: ["Green", "Blue", "Banana"],
 };
 
 var question4 = {
   text: "Question 4?",
-  correctAnswer: "Right",
+  correctAnswer: 2,
   options: ["Wrong", "Wrong", "Right"],
 };
 
 var question5 = {
   text: "Question 5?",
-  correctAnswer: "Right",
+  correctAnswer: 2,
   options: ["Wrong", "Wrong", "Right"],
 };
 
@@ -72,14 +73,30 @@ function populatequestion2() {
   document.getElementById("question").append(q2);
 }
 
+function populatechoices2(x) {
+  var choicebtn2 = document.createElement("button");
+  choicebtn2.innerHTML = x;
+  document.getElementById("choices2").append(choicebtn2);
+}
+
+for (var i = 0; i < question2.options.length; i++) {
+  populatechoices2(question2.options[i]);
+}
+
 startbtn.addEventListener("click", function () {
   quizprompt.classList.add("hide");
   quizcontent.classList.remove("hide");
+  choices2.classList.add("hide");
   populatequestion1();
   startTimer();
 });
-choices.children[0].addEventListener("click", function (x) {
-  console.log("what");
+
+
+choices.children[1].addEventListener("click", function bond() {
+  choices.classList.add("hide");
+  choice2.classList.remove("hide");
 });
 
-
+choices2.children[0].addEventListener("click", function () {
+  console.log("what");
+});
