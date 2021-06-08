@@ -4,40 +4,24 @@ var quizcontent = document.querySelector("#quiz-content");
 var question = document.querySelector("#question");
 var choices = document.querySelector("#choices");
 var quiztimer = document.querySelector("#quiztimer");
-var choice2 = document.querySelector("#choices2")
-var scoredisplay = document.querySelector("#scoredisplay")
+var scoredisplay = document.querySelector("#scoredisplay");
 var timeleft = 75;
 var score = 0;
+var QuestionIndex = 0;
+var OptionIndex = 0;
+var q;
+var choicebtn;
 
-var question1 = {
-    text: "What is a my favorite color?",
-    correctAnswer: "Pink",
-    options: ["Pink", "Yellow", "Blue"],
-};
+var questionSet = ["What is a my favorite color?", "What is a my favorite Animal?", "What is 2 + 2?", "Who is the current president?"];
+var CurrentQuestion = questionSet[0];
 
-var question2 = {
-  text: "What is a my favorite Animal?",
-  correctAnswer: "Unicorn",
-  options: ["Unicorn", "Zebra", "Tiger"],
-};
+var correctAnswer = ["Pink", "Unicorn", "4", "Joe"];
 
-var question3 = {
-  text: "What color is the sky?",
-  correctAnswer: "Blue",
-  options: ["Green", "Blue", "Banana"],
-};
-
-var question4 = {
-  text: "Question 4?",
-  correctAnswer: "Right",
-  options: ["Wrong", "Wrong", "Right"],
-};
-
-var question5 = {
-  text: "Question 5?",
-  correctAnswer: "Right",
-  options: ["Wrong", "Wrong", "Right"],
-};
+var option = new Array ();
+option[0] = new Array ("Pink", "Yellow", "Blue");
+option[1] = new Array ("Unicorn", "Zebra", "Tiger");
+option[2] = new Array ("1", "2", "4");
+option[3] = new Array ("Larry", "Curly", "Joe");   
 
 
 function startTimer() {
@@ -45,65 +29,78 @@ function startTimer() {
     timeleft--;
     quiztimer.textContent ="Seconds left: " + timeleft;
     if(timeleft === 0) {
-      // Stops execution of action at set interval
       clearInterval(interval);
-      // Calls function to create and append image
-      sendMessage();
-    }
-    
+    }   
   }, 1000);
 }
 
 function startquiz() {
-  var q = document.createElement("h3");
-  q.innerHTML = question1.text;
+  q = document.createElement("h3");
+  q.innerHTML = questionSet[QuestionIndex];
   document.getElementById("question").append(q);
   
 }
 
-for (var i = 0; i < question1.options.length; i++) {
+
+  for (var h = 0; h < option[OptionIndex].length; h++) {
   var choicebtn = document.createElement("button");
-  choicebtn.innerHTML = question1.options[i];
+  choicebtn.innerHTML = option[OptionIndex][h];
   document.getElementById("choices").append(choicebtn);
   
+}
+
+var buttoncounter = document.getElementsByTagName("button");
+
+
+function changeoption() {
+  var burrito = 0;
+  for (var h = 0; h < option[OptionIndex].length; h++) {
+    burrito++;
+    buttoncounter[burrito].innerHTML = option[OptionIndex][h];
+    document.getElementById("choices").append(choicebtn);
+  }
+
 }
 
 function setScoreText() {
   scoredisplay.textContent = score;
 }
 
+function removeQuestion(){
+  q.remove();
+}
+
+
 startbtn.addEventListener("click", function () {
   quizprompt.classList.add("hide");
   quizcontent.classList.remove("hide");
-  // choices2.classList.add("hide");
   startquiz();
   startTimer();
 });
 
 choices.addEventListener("click", function (e) {
+  // console.log(correctAnswer)
+  // removeQuestion();
+  // QuestionIndex++;
+  // OptionIndex++;
+  // changeoption();
+  // startquiz();
+  
   var target = e.target;
-  (question1.text).splice(0)
-  console.log(question2.text)
-  if(target.textContent === question1.correctAnswer) {
+  if(target.textContent === correctAnswer.textContent) {
     score +=10;
     setScoreText();
-    
-    
-    
-    // var newQuestion = question1.replace("hola!");
+  } else {
+    score -=10;
+    setScoreText();
   }
-  
-  
-  
-});
+    
+  });
+
 
 document.getElementById("scoredisplay").append("Score: " + score);
 
-// if (target.matches("button")) {
-// }
-
-
-
+// if needing to add a function for each//
 // function populatequestion2() {
   //   var q2 = document.createElement("h3");
   //   q2.innerHTML = question2.text;
