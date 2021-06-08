@@ -9,6 +9,7 @@ var timeleft = 75;
 var score = 0;
 var QuestionIndex = 0;
 var OptionIndex = 0;
+var AnswerIndex = -1;
 var q;
 var choicebtn;
 
@@ -16,6 +17,7 @@ var questionSet = ["What is a my favorite color?", "What is a my favorite Animal
 var CurrentQuestion = questionSet[0];
 
 var correctAnswer = ["Pink", "Unicorn", "4", "Joe"];
+var CurrentCorrectAnswer = correctAnswer[0];
 
 var option = new Array ();
 option[0] = new Array ("Pink", "Yellow", "Blue");
@@ -23,6 +25,9 @@ option[1] = new Array ("Unicorn", "Zebra", "Tiger");
 option[2] = new Array ("1", "2", "4");
 option[3] = new Array ("Larry", "Curly", "Joe");   
 
+function scorebox() {
+// window.prompt("Please enter your initals");
+}
 
 function startTimer() {
   var interval = setInterval(function() {
@@ -30,7 +35,7 @@ function startTimer() {
     quiztimer.textContent ="Seconds left: " + timeleft;
     if(timeleft === 0) {
       clearInterval(interval);
-    }   
+    } scorebox();  
   }, 1000);
 }
 
@@ -42,9 +47,10 @@ function startquiz() {
 }
 
 
-  for (var h = 0; h < option[OptionIndex].length; h++) {
+for (var h = 0; h < option[OptionIndex].length; h++) {
   var choicebtn = document.createElement("button");
   choicebtn.innerHTML = option[OptionIndex][h];
+  choicebtn.setAttribute('value', option[OptionIndex][h]);
   document.getElementById("choices").append(choicebtn);
   
 }
@@ -59,7 +65,7 @@ function changeoption() {
     buttoncounter[burrito].innerHTML = option[OptionIndex][h];
     document.getElementById("choices").append(choicebtn);
   }
-
+  
 }
 
 function setScoreText() {
@@ -79,23 +85,22 @@ startbtn.addEventListener("click", function () {
 });
 
 choices.addEventListener("click", function (e) {
-  console.log(correctAnswer)
-  removeQuestion();
-  QuestionIndex++;
-  OptionIndex++;
-  changeoption();
-  startquiz();
-  
-  var target = e.target;
-  if(target.textContent === correctAnswer.textContent) {
+  AnswerIndex++;
+  var userAnswer = e.target.textContent;
+  if(userAnswer === correctAnswer[AnswerIndex]) {
     score +=10;
     setScoreText();
   } else {
     score -=10;
+    timeleft -=60;
     setScoreText();
   }
-    
-  });
+  OptionIndex++;
+  QuestionIndex++;
+  removeQuestion();
+  changeoption();
+  startquiz();
+});
 
 
 document.getElementById("scoredisplay").append("Score: " + score);
