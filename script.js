@@ -79,12 +79,12 @@ startbtn.addEventListener("click", function () {
 });
 
 choices.addEventListener("click", function (e) {
-  // console.log(correctAnswer)
-  // removeQuestion();
-  // QuestionIndex++;
-  // OptionIndex++;
-  // changeoption();
-  // startquiz();
+  console.log(correctAnswer)
+  removeQuestion();
+  QuestionIndex++;
+  OptionIndex++;
+  changeoption();
+  startquiz();
   
   var target = e.target;
   if(target.textContent === correctAnswer.textContent) {
@@ -100,15 +100,3 @@ choices.addEventListener("click", function (e) {
 
 document.getElementById("scoredisplay").append("Score: " + score);
 
-// if needing to add a function for each//
-// function populatequestion2() {
-  //   var q2 = document.createElement("h3");
-  //   q2.innerHTML = question2.text;
-  //   document.getElementById("question").append(q2);
-  // }
-  
-  // function populatechoices2(x) {
-    //   var choicebtn2 = document.createElement("button");
-    //   choicebtn2.innerHTML = x;
-//   document.getElementById("choices2").append(choicebtn2);
-// }
